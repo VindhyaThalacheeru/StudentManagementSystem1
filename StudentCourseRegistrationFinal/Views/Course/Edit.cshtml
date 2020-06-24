@@ -1,0 +1,62 @@
+﻿@model StudentCourseRegistrationFinal.Models.CourseModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 style="text-align:center;">EDIT</h2>
+<p>
+    @Html.ActionLink("Back", "DisplayCourses")
+</p>
+@using (Html.BeginForm("Edit", "Course", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <body background="C:\Users\Vindhya\Desktop\RegularPart-Time-Courses.jpg">
+    </body>
+    <table class="table table-bordered" style="border-color:black; background-color:lightpink">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fees)
+            </th>
+            <th></th>
+        </tr>
+
+
+        <tr>
+            <td>
+                @Html.EditorFor(modelItem => modelItem.CourseId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.CourseDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Duration)
+            </td>
+            <td>
+                @Html.EditorFor(modelItem => modelItem.Fees)
+            </td>
+            <td>
+                <input type="submit" value="Edit" style="background-color:greenyellow; border-color:blueviolet" class="btn btn-default" />
+            </td>
+        </tr>
+
+
+    </table>
+}
+
+

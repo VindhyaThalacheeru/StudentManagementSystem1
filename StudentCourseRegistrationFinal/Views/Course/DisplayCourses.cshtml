@@ -1,0 +1,99 @@
+﻿@model IEnumerable<StudentCourseRegistrationFinal.Models.CourseModel>
+
+@{
+    ViewBag.Title = "DisplayCourses";
+}
+
+
+<h2 style="text-align:center;">DISPLAYCOURSES</h2>
+<input type="text" id="search_field" class="form-control" name="Course Name" placeholder="Search By CourseName" style="border-color:black" onkeyup="mySearch()">
+<div></div>
+<div></div>
+<p>
+    @Html.ActionLink("Back", "Index")
+</p>
+<body background="C:\Users\Vindhya\Desktop\RegularPart-Time-Courses.jpg">
+</body>
+<table class="table table-bordered" style="border-color:black; background-color:papayawhip" id="displaycourses">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fees)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fees)
+            </td>
+            <td>
+                @Html.ActionLink("Detail", "Detail", new { id = item.CourseId }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+            </td>
+        </tr>
+
+    }
+</table>
+<script>
+    function mySearch() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search_field");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("displaycourses");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong>This alert box indicates a successful or positive action.
+</div>
+<div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong>This alert box could indicate a warning that might need attention.
+</div>
+<div class="alert alert-warning">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning!</strong>This alert box could indicate a warning that might need attention.
+</div>
